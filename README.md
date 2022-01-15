@@ -29,6 +29,10 @@
 ![UploadFile](src/main/resources/img/index.png)
 
 ### 使用说明
+
+> 此项目为[MySQLToWordOrExcel](https://github.com/Zhuoyuan1/MySQLToWordOrExcel) 的子模块项目，
+> 如果此项目有帮到您，麻烦您点下star，万分感谢！！
+
 方式一：
 
   直接运行 **MainIndexFrame** 即可
