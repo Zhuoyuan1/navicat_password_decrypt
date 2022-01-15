@@ -80,7 +80,7 @@ public class MainIndexFrame {
         jPanel.add(navicat12more);
         jPanel.add(password);
         jPanel.add(showButton);
-        LinkLabel explain = new LinkLabel("操作说明", "https://blog.csdn.net/kkk123445/article/details/115748954?spm=1001.2014.3001.5501");
+        LinkLabel explain = new LinkLabel("操作说明", "https://blog.csdn.net/kkk123445/article/details/122514124");
         explain.setHorizontalAlignment(SwingConstants.LEFT);
         filePanel.add(explain);
         JLabel jl = new JLabel("<html>&nbsp;&nbsp;&nbsp;&nbsp;导入ncx文件，请选择：</html>");
@@ -220,7 +220,7 @@ public class MainIndexFrame {
             for (Map.Entry<String, Map<String, String>> valueMap : map.entrySet()) {
                 Map<String, String> resultMap = valueMap.getValue();
                 String password = decodeNcx.decode(resultMap.getOrDefault("Password", ""));
-                stringBuilder.append(resultMap.get("Host")).append("|").append(resultMap.get("Port"))
+                stringBuilder.append(resultMap.get("Host")).append("|").append(resultMap.get("Port")).append("|")
                         .append(resultMap.get("UserName")).append("|").append(resultMap.get("ConnType")).append(" = ")
                         .append(password).append("\n");
             }
