@@ -1,4 +1,4 @@
-package com.easyconnect.navicat;
+package navicat;
 
 /**
  * NavicatChiper

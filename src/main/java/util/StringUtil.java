@@ -1,6 +1,4 @@
-package com.easyconnect.util;
-
-import com.mysql.cj.util.StringUtils;
+package util;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -12,13 +10,6 @@ import java.util.Iterator;
  * @date 2021/11/1 15:24
  **/
 public class StringUtil {
-
-    public static String StringEqual(String str) {
-        if (StringUtils.isNullOrEmpty(str)) {
-            return "--";
-        }
-        return str;
-    }
 
     public static String join(Collection collection, String split) {
         StringBuilder stringBuffer = new StringBuilder();

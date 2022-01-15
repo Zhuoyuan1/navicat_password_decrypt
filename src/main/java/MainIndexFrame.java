@@ -1,17 +1,30 @@
-package ui;
-
-import enums.NavicatVerEnum;
+import enums.VersionEnum;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import ui.LinkLabel;
 import util.DecodeNcx;
 
-import javax.swing.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.JToolBar;
+import javax.swing.SwingConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -27,15 +40,27 @@ import java.util.regex.Pattern;
  * @author lzy
  * @date 2021/01/15 14:03
  */
-public class IndexFrame {
+public class MainIndexFrame {
     private static final double NAVICAT11 = 1.1D;
 
+    /**
+     * 解密工具类
+     */
     private static DecodeNcx decodeNcx;
 
+    /**
+     * navicat11选项
+     */
     private static final JRadioButton navicat11 = new JRadioButton("navicat11");
 
+    /**
+     * navicat12以上选项
+     */
     private static final JRadioButton navicat12more = new JRadioButton("navicat12+", true);
 
+    /**
+     * 密文正则
+     */
     public static final String PASS_WORD = "^[A-Za-z0-9]+$";
 
     public void UpLoadFile() {
@@ -55,6 +80,9 @@ public class IndexFrame {
         jPanel.add(navicat12more);
         jPanel.add(password);
         jPanel.add(showButton);
+        LinkLabel explain = new LinkLabel("操作说明", "https://blog.csdn.net/kkk123445/article/details/115748954?spm=1001.2014.3001.5501");
+        explain.setHorizontalAlignment(SwingConstants.LEFT);
+        filePanel.add(explain);
         JLabel jl = new JLabel("<html>&nbsp;&nbsp;&nbsp;&nbsp;导入ncx文件，请选择：</html>");
         jl.setHorizontalAlignment(SwingConstants.LEFT);
         filePanel.add(jl);
@@ -88,9 +116,9 @@ public class IndexFrame {
         //单个密码查看
         showButton.addActionListener(e -> {
             if (navicat11.isSelected()) {
-                decodeNcx = new DecodeNcx(NavicatVerEnum.native11.name());
+                decodeNcx = new DecodeNcx(VersionEnum.native11.name());
             } else {
-                decodeNcx = new DecodeNcx(NavicatVerEnum.navicat12more.name());
+                decodeNcx = new DecodeNcx(VersionEnum.navicat12more.name());
             }
             if (!Pattern.matches(PASS_WORD, password.getText())) {
                 JOptionPane.showMessageDialog(null,
@@ -148,9 +176,9 @@ public class IndexFrame {
                 NamedNodeMap verMap = nodeList.item(0).getAttributes();
                 double version = Double.parseDouble((verMap.getNamedItem("Ver").getNodeValue()));
                 if (version <= NAVICAT11) {
-                    decodeNcx = new DecodeNcx(NavicatVerEnum.native11.name());
+                    decodeNcx = new DecodeNcx(VersionEnum.native11.name());
                 } else {
-                    decodeNcx = new DecodeNcx(NavicatVerEnum.navicat12more.name());
+                    decodeNcx = new DecodeNcx(VersionEnum.navicat12more.name());
                 }
                 //配置map
                 Map<String, Map<String, String>> connectionMap = new HashMap<>();
@@ -184,17 +212,16 @@ public class IndexFrame {
     /**
      * 写入配置文件
      *
-     * @param list
+     * @param list 读取ncx文件的数据
      */
-    private static String writeConfigFile(List<Map<String, Map<String, String>>> list) throws Exception {
+    private static String writeConfigFile(List<Map<String, Map<String, String>>> list) {
         StringBuilder stringBuilder = new StringBuilder();
         for (Map<String, Map<String, String>> map : list) {
             for (Map.Entry<String, Map<String, String>> valueMap : map.entrySet()) {
                 Map<String, String> resultMap = valueMap.getValue();
                 String password = decodeNcx.decode(resultMap.getOrDefault("Password", ""));
                 stringBuilder.append(resultMap.get("Host")).append("|").append(resultMap.get("Port"))
-                        .append("||").append(resultMap.get("UserName"))
-                        .append("|").append(resultMap.get("ConnType")).append(" = ")
+                        .append(resultMap.get("UserName")).append("|").append(resultMap.get("ConnType")).append(" = ")
                         .append(password).append("\n");
             }
         }
@@ -202,7 +229,7 @@ public class IndexFrame {
     }
 
     public static void main(String[] args) {
-        IndexFrame u = new IndexFrame();
+        MainIndexFrame u = new MainIndexFrame();
         u.UpLoadFile();
     }
 }

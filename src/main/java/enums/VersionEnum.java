@@ -6,7 +6,7 @@ package enums;
  * @author lzy
  * @date 2021/01/14 14:58
  */
-public enum NavicatVerEnum {
+public enum VersionEnum {
     /**
      * navicat11
      */

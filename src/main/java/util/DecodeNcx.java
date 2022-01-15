@@ -1,8 +1,8 @@
-package com.easyconnect.util;
+package util;
 
-import com.easyconnect.enums.NavicatVerEnum;
-import com.easyconnect.factory.NavicatCipherFactory;
-import com.easyconnect.navicat.NavicatChiper;
+import enums.VersionEnum;
+import factory.NavicatCipherFactory;
+import navicat.NavicatChiper;
 
 /**
  * DecodeNcx 解密navicat导出的密码
@@ -25,7 +25,7 @@ public class DecodeNcx {
     /**
      * 根据mode进行解密
      *
-     * @param str
+     * @param str 密文
      * @return String
      */
     public String decode(String str) {
@@ -37,7 +37,7 @@ public class DecodeNcx {
     }
 
     public static void main(String[] args) {
-        DecodeNcx decodeNcx = new DecodeNcx(NavicatVerEnum.native11.name());
-        System.out.println(decodeNcx.decode("575D3920F7"));
+        DecodeNcx decodeNcx = new DecodeNcx(VersionEnum.native11.name());
+        System.out.println(decodeNcx.decode("15057D7BA390"));
     }
 }

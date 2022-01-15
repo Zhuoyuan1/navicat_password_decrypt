@@ -1,10 +1,6 @@
-package com.easyconnect.ui.component;
+package ui;
 
-import com.easyconnect.util.OpenUrl;
-
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import java.awt.Cursor;
 import java.awt.Desktop;
 import java.awt.event.MouseAdapter;
@@ -14,6 +10,7 @@ import java.awt.event.MouseEvent;
  * 超链接
  *
  * @author lzy
+ * @date 2021/01/15 17:03
  */
 public class LinkLabel extends JLabel {
     private String text, url;
@@ -46,7 +43,9 @@ public class LinkLabel extends JLabel {
             @Override
             public void mouseClicked(MouseEvent e) {
                 try {
-                    OpenUrl.openURL(LinkLabel.this.url);
+                    Desktop.getDesktop()
+                            .browse(new java.net.URI(LinkLabel.this.url));
+                    ;
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -62,12 +61,12 @@ public class LinkLabel extends JLabel {
         }
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         JFrame jf = new JFrame();
         JPanel jp = new JPanel();
         jp.add(new LinkLabel("百度一下", "https://www.baidu.com"));
         jf.setContentPane(jp);
         jf.pack();
         jf.setVisible(true);
-    }
+    }*/
 }

@@ -1,10 +1,10 @@
-package com.easyconnect.factory;
+package factory;
 
-import com.easyconnect.enums.NavicatVerEnum;
-import com.easyconnect.navicat.Navicat11Cipher;
-import com.easyconnect.navicat.Navicat12Cipher;
-import com.easyconnect.navicat.NavicatChiper;
+import enums.VersionEnum;
 import lombok.SneakyThrows;
+import navicat.Navicat11Cipher;
+import navicat.Navicat12Cipher;
+import navicat.NavicatChiper;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -22,8 +22,8 @@ public class NavicatCipherFactory {
     private static final Map<String, NavicatChiper> REPORT_POOL = new ConcurrentHashMap<>(0);
 
     static {
-        REPORT_POOL.put(NavicatVerEnum.native11.name(), new Navicat11Cipher());
-        REPORT_POOL.put(NavicatVerEnum.navicat12more.name(), new Navicat12Cipher());
+        REPORT_POOL.put(VersionEnum.native11.name(), new Navicat11Cipher());
+        REPORT_POOL.put(VersionEnum.navicat12more.name(), new Navicat12Cipher());
     }
 
     /**
