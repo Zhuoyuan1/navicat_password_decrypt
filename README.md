@@ -6,3 +6,35 @@
  </a>
 </p>
 
+### 功能速览
+
+* 1.输入模式
+
+    > 框中输入navicat密码密文，点击查看密码，即可
+    
+* 2.导入模式
+    
+   > 选择navicat导出连接的文件（ncx后缀），上传文件后，密码信息会出现在文本框中
+
+### 环境说明
+
+* Java
+  > java1.8+ (建议最好1.8.0_151以上的版本，因为151版本为JVM启用无限制强度管辖策略)
+
+* Navicat
+  > navicat版本（11.2.7、12.1.15、15.1.17、16.0.3上述版本均已通过测试）
+
+### 页面展示
+
+![UploadFile](src/main/resources/img/index.png)
+
+### 使用说明
+方式一：
+
+  直接运行 **MainIndexFrame** 即可
+
+方式二：
+
+  找到 *src/main/java/util/DecodeNcx* ，此工具类中有解密main方法
+
+
