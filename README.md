@@ -8,7 +8,7 @@
 
 ### 前期准备
 
-[navicat注册表获得或直接导出连接]()
+[navicat注册表获得或直接导出连接](https://blog.csdn.net/qq_42745404/article/details/105887302)
 
 ### 功能速览
 
