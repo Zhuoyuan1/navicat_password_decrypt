@@ -8,7 +8,7 @@
 
 ### 前期准备
 
-<a target="_blank" href="https://blog.csdn.net/qq_42745404/article/details/105887302">navicat注册表获得或直接导出连接</a>
+<a target="_blank" href="https://blog.csdn.net/kkk123445/article/details/122514124?spm=1001.2014.3001.5502">navicat注册表获得或直接导出连接</a>
 
 ### 功能速览
 
