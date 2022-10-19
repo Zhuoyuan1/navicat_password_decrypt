@@ -44,5 +44,7 @@
 方式二：
 
   找到 *src/main/java/util/DecodeNcx* ，此工具类中有解密main方法
-
+  
+### 感谢
+解密算法由 HyperSine 大神的 [https://github.com/yinqiwen/gscan](https://github.com/HyperSine/how-does-navicat-encrypt-password) 提供，在此感谢
 
